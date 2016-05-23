@@ -20,7 +20,7 @@
 
 (deftest should-return-content-based-on-jsonpath
   (let [server (respond (matches (http-server 12306) (eq (json-path "$.book.price") "1")) "World")]
-    (run server #(is (= (:body (post-root "{\"book\":{\"price\":\"1\"}}")) "World")))))
+    (run server #(is (=  "World" (:body (post-root "{\"book\":{\"price\":\"1\"}}")))))))
 
 (deftest should-throw-exception-when-there-is-no-jsonpath-matched
   (let [server (respond (matches (http-server 12306) (eq (json-path "$.book.price") "1")) "World")]
