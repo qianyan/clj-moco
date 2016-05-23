@@ -19,17 +19,29 @@
                 :body body}))
 
 (deftest should-return-content-based-on-jsonpath
-  (let [server (respond (matches (http-server 12306) (eq (json-path "$.book.price") "1")) "World")]
+  (let [server (-> 12306
+                   http-server
+                   (matches (eq (json-path "$.book.price") "1"))
+                   (respond "World"))]
     (run server #(is (=  "World" (:body (post-root "{\"book\":{\"price\":\"1\"}}")))))))
 
 (deftest should-throw-exception-when-there-is-no-jsonpath-matched
-  (let [server (respond (matches (http-server 12306) (eq (json-path "$.book.price") "1")) "World")]
+  (let [server (-> 12306
+                   http-server
+                   (matches (eq (json-path "$.book.price") "1"))
+                   (respond "World"))]
     (run server #(is (thrown? RuntimeException (post-root "{\"book\":{\"price\":\"2\"}}"))))))
 
 (deftest should-match-exact-json
-  (let [server (respond (matches (http-server 12306) (json "{\"foo\":\"bar\"}")) "foo")]
+  (let [server (-> 12306
+                   http-server
+                   (matches (json "{\"foo\":\"bar\"}"))
+                   (respond "foo"))]
     (run server #(is (= "foo" (:body (post-root "{\"foo\":\"bar\"}")))))))
 
 (deftest should-match-map-json
-  (let [server (respond (matches (http-server 12306) (json {:code 1 :message "message"})) "foo")]
+  (let [server (-> 12306
+                   http-server
+                   (matches (map->json {:code 1 :message "message"}))
+                   (respond "foo"))]
     (run server #(is (= "foo" (:body (post-root "{\"code\":1, \"message\":\"message\"}")))))))

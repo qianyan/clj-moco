@@ -21,9 +21,9 @@
 (defn json-path [jp]
   (Moco/jsonPath jp))
 
-(defn json [^String json-text]
-  (Moco/json json-text))
+(defn json [json-text]
+  (Moco/json ^String json-text))
 
-(defn json [map]
-  (Moco/json (generate-string map)))
+(defn map->json [map]
+  (json-str (generate-string map)))
 
