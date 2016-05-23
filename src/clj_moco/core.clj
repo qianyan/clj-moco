@@ -1,6 +1,4 @@
 (ns clj-moco.core
-  (:require [clj-moco.extractor-matcher :refer [eq json-path]]
-            [clj-http.client :as client])
   (:import
    (java.util.concurrent TimeUnit)
    (com.github.dreamhead.moco Moco MocoConfig)
@@ -37,9 +35,6 @@
 (defn xml [content]
   (Moco/xml content))
 
-(defn json [content]
-  (Moco/json content))
-
 (defn latency [duration]
   (let [millis :toMillis]
     (Moco/latency (millis duration) TimeUnit/MILLISECONDS)))
@@ -60,4 +55,5 @@
 (defn respond [{:keys [response-setting server]} content]
   (.response response-setting content)
   (MocoHttpServer. server))
+
 

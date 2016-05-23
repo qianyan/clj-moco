@@ -26,3 +26,10 @@
   (let [server (respond (matches (http-server 12306) (eq (json-path "$.book.price") "1")) "World")]
     (run server #(is (thrown? RuntimeException (post-root "{\"book\":{\"price\":\"2\"}}"))))))
 
+(deftest should-match-exact-json
+  (let [server (respond (matches (http-server 12306) (json "{\"foo\":\"bar\"}")) "foo")]
+    (run server #(is (= "foo" (:body (post-root "{\"foo\":\"bar\"}")))))))
+
+(deftest should-match-map-json
+  (let [server (respond (matches (http-server 12306) (json {:code 1 :message "message"})) "foo")]
+    (run server #(is (= "foo" (:body (post-root "{\"code\":1, \"message\":\"message\"}")))))))

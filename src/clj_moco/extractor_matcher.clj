@@ -1,4 +1,5 @@
 (ns clj-moco.extractor-matcher
+  (:require [cheshire.core :refer :all])
   (:import
    (com.github.dreamhead.moco Moco)))
 
@@ -19,4 +20,10 @@
 
 (defn json-path [jp]
   (Moco/jsonPath jp))
+
+(defn json [^String json-text]
+  (Moco/json json-text))
+
+(defn json [map]
+  (Moco/json (generate-string map)))
 
