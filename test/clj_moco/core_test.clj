@@ -22,14 +22,14 @@
   (let [server (-> 12306
                    http-server
                    (matches (eq (json-path "$.book.price") "1"))
-                   (respond "World"))]
-    (run server #(is (=  "World" (:body (post-root "{\"book\":{\"price\":\"1\"}}")))))))
+                   (respond "foo"))]
+    (run server #(is (=  "foo" (:body (post-root "{\"book\":{\"price\":\"1\"}}")))))))
 
 (deftest should-throw-exception-when-there-is-no-jsonpath-matched
   (let [server (-> 12306
                    http-server
                    (matches (eq (json-path "$.book.price") "1"))
-                   (respond "World"))]
+                   (respond "foo"))]
     (run server #(is (thrown? RuntimeException (post-root "{\"book\":{\"price\":\"2\"}}"))))))
 
 (deftest should-match-exact-json
