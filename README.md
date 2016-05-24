@@ -3,9 +3,10 @@
 An easy setup stub framework in Clojure. Wrapping Moco.
 
 ## Usage
-1. jsonpath
+
+1\. jsonpath
 ```clojure
-(respond (matches (http-server 12306) (eq (json-path "$.book.price") "1")) "World")
+(respond (matches (http-server 12306) (eq (json-path "$.book.price") "1")) "foo")
 or
 (-> 12306
     http-server
