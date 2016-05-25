@@ -20,7 +20,7 @@ or
     (matches (json "{\"foo\":\"bar\"}"))
     (respond "foo"))
 ```
-3\. matches map jsonpath
+3\. matches map
 ```clojure
 (respond (matches (http-server 12306) (map->json {:code 1 :message "message"})) "foo")
 or
@@ -28,7 +28,7 @@ or
     (matches (map->json {:code 1 :message "message"}))
     (respond "foo"))
 ```
-4\. exists json
+4\. exists jsonpath
 ```clojure
 (respond (matches (http-server 12306) (exists (json-path "$.book.price"))) "foo")
 or
@@ -36,7 +36,11 @@ or
     (matches (exists (json-path "$.book.price")))
     (respond "foo"))
 ```
-
+5\. respond something
+```clojure
+(-> (http-server 12306)
+    (respond "foo"))
+```
 ## License
 
 Copyright © 2016 FIXME

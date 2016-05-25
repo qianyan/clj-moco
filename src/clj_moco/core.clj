@@ -46,14 +46,14 @@
   (Moco/attachment filename resource))
 
 (defn http-server [port & _]
-  (Moco/httpServer port (into-array MocoConfig _)))
+  {:server (Moco/httpServer port (into-array MocoConfig _))})
 
-(defn matches [server matcher]
+(defn matches [{:keys [server]} matcher]
   {:response-setting (.request server matcher)
    :server server})
 
 (defn respond [{:keys [response-setting server]} content]
-  (.response response-setting content)
+  (.response (or response-setting server) content)
   (MocoHttpServer. server))
 
 

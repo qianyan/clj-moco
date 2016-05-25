@@ -6,6 +6,8 @@
   :dependencies [[org.clojure/clojure "1.8.0"]
                  [com.github.dreamhead/moco-core "0.10.2"]
                  [clj-http "3.1.0"]
-                 [cheshire "5.6.1"]])
+                 [cheshire "5.6.1"]
+                 [org.clojure/test.check "b0.9.0"]
+                 [prismatic/schema "1.1.1"]])
 
 
