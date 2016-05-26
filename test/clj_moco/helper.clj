@@ -1,4 +1,5 @@
 (ns clj-moco.helper
+  (:refer-clojure :exclude [get])
   (:require [clj-http.client :as client]))
 
 (defn root [& [port]]
