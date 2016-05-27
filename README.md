@@ -1,6 +1,6 @@
 # clj-moco
 
-An easy setup stub framework in Clojure. Wrapping Moco.
+An easy setup stub framework in Clojure. Wrapping [Moco](https://github.com/dreamhead/moco).
 
 ## Usage
 
@@ -49,7 +49,6 @@ or
 ```
 ## License
 
-Copyright © 2016 FIXME
+Copyright © 2016 Lambeta
 
-Distributed under the Eclipse Public License either version 1.0 or (at
-your option) any later version.
+Distributed under the Eclipse Public License either version 1.0.
