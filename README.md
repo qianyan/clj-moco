@@ -41,6 +41,12 @@ or
 (-> (http-server 12306)
     (respond "foo"))
 ```
+
+6\. respond a file
+```clojure
+(-> (http-server 12306)
+    (respond (->file "resources/foo.response")))
+```
 ## License
 
 Copyright © 2016 FIXME
