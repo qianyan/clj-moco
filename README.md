@@ -1,4 +1,4 @@
-# clj-moco
+# clj-moco [![Clojars Project](https://img.shields.io/clojars/v/clj-moco.svg)](https://clojars.org/clj-moco)
 
 An easy setup stub framework in Clojure, wrapping [Moco](https://github.com/dreamhead/moco).
 

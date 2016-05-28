@@ -1,5 +1,5 @@
 (defproject clj-moco "0.1.0-SNAPSHOT"
-  :description "An easy setup stub framework in Clojure. Wrapping Moco"
+  :description "An easy setup stub framework in Clojure, wrapping Moco"
   :url "https://lambeta.com/archives/"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
