@@ -1,6 +1,6 @@
 # clj-moco
 
-An easy setup stub framework in Clojure. Wrapping [Moco](https://github.com/dreamhead/moco).
+An easy setup stub framework in Clojure, wrapping [Moco](https://github.com/dreamhead/moco).
 
 ## Usage
 
@@ -47,8 +47,16 @@ or
 (-> (http-server 12306)
     (respond (->file "resources/foo.response")))
 ```
+
+7\. by uri
+```clojure
+(-> (http-server 12306)
+    (matches (by (uri "/foo")))
+    (respond "bar"))
+```
+
 ## License
 
-Copyright © 2016 Lambeta
+Copyright © 2016 lambeta
 
-Distributed under the Eclipse Public License either version 1.0.
+Distributed under the Eclipse Public License either version 1.0

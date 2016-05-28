@@ -30,3 +30,8 @@
 (defn map->json [map]
   (json (generate-string map)))
 
+(defn by [resource]
+  (Moco/by resource))
+
+(defn uri [uri]
+  (Moco/uri uri))
