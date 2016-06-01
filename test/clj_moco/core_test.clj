@@ -2,8 +2,9 @@
   (:refer-clojure :exclude [get])
   (:require [clj-moco
              [core :refer :all]
+             [predicates :refer [and]]
              [extractor-matcher :refer [by uri]]
-             [helper :refer [context get root]]
+             [helper :refer [context get post-content root]]
              [resource-handler :refer [->file ->handler ->resource]]
              [runner :refer [run]]]
             [clojure.test :refer :all]))
@@ -33,3 +34,13 @@
                    (matches (by (uri "/foo")))
                    (respond "bar"))]
     (run server #(is (= "bar" (:body (get (context "/foo"))))))))
+
+(deftest should-match-request-on-multiple-matchers
+  (let [server (-> (http-server 12306)
+                   (matches (and (by "foo") (by (uri "/foo"))))
+                   (respond "bar"))]
+    (run server #(is (= "bar" (:body (post-content "/foo" "foo")))))))
+
+
+
+

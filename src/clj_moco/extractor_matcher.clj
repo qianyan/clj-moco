@@ -1,5 +1,6 @@
 (ns clj-moco.extractor-matcher
-  (:require [cheshire.core :refer :all])
+  (:require [cheshire.core :refer :all]
+            [clj-moco.predicates :refer [and]])
   (:import
    (com.github.dreamhead.moco Moco)))
 
@@ -34,4 +35,4 @@
   (Moco/by resource))
 
 (defn uri [uri]
-  (Moco/uri uri))
+     (Moco/uri uri))

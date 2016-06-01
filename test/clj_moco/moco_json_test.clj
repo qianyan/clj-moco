@@ -4,7 +4,7 @@
               [extractor-matcher :refer :all]
               [helper :refer [post-root]]
               [runner :refer [run]]]
-            [clojure.test :refer :all]))
+             [clojure.test :refer :all]))
 
 (deftest should-return-content-based-on-jsonpath
   (let [server (-> (http-server 12306)
@@ -35,4 +35,8 @@
                    (matches (exists (json-path "$.book.price")))
                    (respond "foo"))]
     (run server #(is (= "foo" (:body (post-root "{\"book\":{\"price\":\"1\"}}")))))))
+
+
+
+
 

@@ -13,5 +13,10 @@
                {:headers {"Content-Type" "text/plain"}
                 :body body}))
 
+(defn post-content [uri body]
+  (client/post (context uri)
+               {:headers {"Content-Type" "text/plain"}
+                :body body}))
+
 (defn get [root-url]
   (client/get root-url))

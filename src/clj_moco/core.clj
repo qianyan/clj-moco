@@ -1,6 +1,4 @@
 (ns clj-moco.core
-  (:require [schema.core :as s]
-            [schema.experimental.generators :as sg])
   (:import [com.github.dreamhead.moco Moco MocoConfig]
            com.github.dreamhead.moco.internal.MocoHttpServer))
 
@@ -15,9 +13,3 @@
   (.response (or response-setting server) content)
   (MocoHttpServer. server))
 
-(s/defschema Customer
-  {:name s/Str
-   :age s/Int
-   :gender s/Str})
-
-(sg/generate Customer)

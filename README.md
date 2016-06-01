@@ -55,6 +55,13 @@ or
     (respond "bar"))
 ```
 
+8\. and predicate
+```clojure
+(-> (http-server 12306)
+    (matches (and (by "foo") (by (uri "/foo"))))
+    (respond "bar"))
+```
+
 ## License
 
 Copyright © 2016 lambeta
