@@ -55,11 +55,16 @@ or
     (respond "bar"))
 ```
 
-8\. and predicate
+8\. and/or predicate
 ```clojure
+(require '[predicates :as p])
 (-> (http-server 12306)
-    (matches (and (by "foo") (by (uri "/foo"))))
+    (matches (p/and (by "foo") (by (uri "/foo"))))
     (respond "bar"))
+    
+(-> (http-server 12306)
+    (matches (p/or (by "foo") (by (uri "/foo"))))
+    (respond "bar"))    
 ```
 
 ## License

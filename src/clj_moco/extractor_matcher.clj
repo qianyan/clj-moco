@@ -1,8 +1,6 @@
 (ns clj-moco.extractor-matcher
-  (:require [cheshire.core :refer :all]
-            [clj-moco.predicates :refer [and]])
-  (:import
-   (com.github.dreamhead.moco Moco)))
+  (:require [cheshire.core :refer :all])
+  (:import com.github.dreamhead.moco.Moco))
 
 (defn eq [extractor expected]
   (Moco/eq extractor expected))
