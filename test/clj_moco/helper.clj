@@ -9,7 +9,7 @@
   (str (root) uri))
 
 (defn post-root [body]
-  (client/post "http://localhost:12306"
+  (client/post (root)
                {:headers {"Content-Type" "text/plain"}
                 :body body}))
 
