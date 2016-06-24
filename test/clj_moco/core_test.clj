@@ -41,11 +41,21 @@
                    (respond "bar"))]
     (run server #(is (= "bar" (:body (post-content "/foo" "foo")))))))
 
+(deftest should-throw-exception-request-when-and-predicates-not-matched
+  (let [server (-> (http-server 12306)
+                   (matches (p/and (by "foo") (by (uri "/foo"))))
+                   (respond "bar"))]
+    (run server #(is (thrown? RuntimeException (post-content "/foo" "bar"))))))
+
 (deftest should-match-request-on-any-matchers
   (let [server (-> (http-server 12306)
                    (matches (p/or (by "foo") (by (uri "/foo"))))
                    (respond "bar"))]
     (run server #(is (= "bar" (:body (post-content "/bar" "foo")))))))
 
-
+(deftest should-throw-exception-when-none-of-predicates-matched
+  (let [server (-> (http-server 12306)
+                   (matches (p/or (by "foo") (by (uri "/foo"))))
+                   (respond "bar"))]
+    (run server #(is (thrown? RuntimeException (post-content "/bar" "bar"))))))
 

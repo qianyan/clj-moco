@@ -12,4 +12,3 @@
 (defn respond [{:keys [response-setting server]} content]
   (.response (or response-setting server) content)
   (MocoHttpServer. server))
-
