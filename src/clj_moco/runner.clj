@@ -1,9 +1,9 @@
 (ns clj-moco.runner)
 
-(defn run
-  [server f]
-  (try
-    (.start server)
-    (f)
+(defmacro run
+  [server assert-expr]
+  `(try
+    (.start ~server)
+    ~assert-expr
     (finally
-      (.stop server))))
+      (.stop ~server))))
